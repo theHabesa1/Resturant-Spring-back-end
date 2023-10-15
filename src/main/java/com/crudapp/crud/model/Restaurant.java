@@ -22,55 +22,59 @@ public class Restaurant {
     @Lob
     private byte[] restaurant_picture;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List <Category> categories;
 
-    public Long getRestaurant_id() {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Long getRestaurantId() {
         return restaurant_id;
     }
 
-    public void setRestaurant_id(Long restaurant_id) {
+    public void setRestaurantId(Long restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
 
-    public String getRestaurant_name() {
+    public String getRestaurantName() {
         return restaurant_name;
     }
 
-    public void setRestaurant_name(String restaurant_name) {
+    public void setRestaurantName(String restaurant_name) {
         this.restaurant_name = restaurant_name;
     }
 
-    public String getRestaurant_description() {
+    public String getRestaurantDescription() {
         return restaurant_description;
     }
 
-    public void setRestaurant_description(String restaurant_description) {
+    public void setRestaurantDescription(String restaurant_description) {
         this.restaurant_description = restaurant_description;
     }
 
-    public String getRestaurant_location() {
+    public String getRestaurantLocation() {
         return restaurant_location;
     }
 
-    public void setRestaurant_location(String restaurant_location) {
+    public void setRestaurantLocation(String restaurant_location) {
         this.restaurant_location = restaurant_location;
     }
 
-    public byte[] getRestaurant_picture() {
+    public byte[] getRestaurantPicture() {
         return restaurant_picture;
     }
 
-    public void setRestaurant_picture(byte[] restaurant_picture) {
+    public void setRestaurantPicture(byte[] restaurant_picture) {
         this.restaurant_picture = restaurant_picture;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

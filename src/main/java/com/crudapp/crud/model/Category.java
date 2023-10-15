@@ -16,9 +16,7 @@ public class Category {
 
     private String category_name;
 
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant; // Add a restaurant field to represent the relationship
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
@@ -26,28 +24,20 @@ public class Category {
 
     // Constructors, getters, and setters...
 
-    public Long getCategory_id() {
+    public Long getCategoryId() {
         return category_id;
     }
 
-    public void setCategory_id(Long category_id) {
+    public void setCategoryId(Long category_id) {
         this.category_id = category_id;
     }
 
-    public String getCategory_name() {
+    public String getCategoryName() {
         return category_name;
     }
 
-    public void setCategory_name(String category_name) {
+    public void setCategoryName(String category_name) {
         this.category_name = category_name;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
     public List<MenuItem> getMenuItems() {
@@ -56,5 +46,8 @@ public class Category {
 
     public void setMenuItems(List<MenuItem> menuItems) {
         this.menuItems = menuItems;
+    }
+
+    public void setCategory_id(Long id) {
     }
 }
