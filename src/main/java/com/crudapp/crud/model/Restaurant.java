@@ -23,8 +23,7 @@ public class Restaurant {
     private byte[] restaurant_picture;
 
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private List <Category> categories;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id")

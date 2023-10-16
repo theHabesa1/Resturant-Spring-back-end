@@ -43,7 +43,7 @@ public class MenuItemController {
     public String createMenuItemForm(Model model) {
         model.addAttribute("menuItem", new MenuItem());
         List<Category> categories = categoryRepository.findAll();
-        model.addAttribute("categories", categories); // Pass a list of categories to the form
+        model.addAttribute("categories", categories);
         return "menuitem/create";
     }
 
@@ -59,7 +59,7 @@ public class MenuItemController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid menu item ID: " + id));
         model.addAttribute("menuItem", menuItem);
         List<Category> categories = categoryRepository.findAll();
-        model.addAttribute("categories", categories); // Pass a list of categories to the form
+        model.addAttribute("categories", categories);
         return "menuitem/edit";
     }
 

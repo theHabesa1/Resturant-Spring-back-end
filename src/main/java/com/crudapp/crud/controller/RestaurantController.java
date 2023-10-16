@@ -1,7 +1,11 @@
 package com.crudapp.crud.controller;
 
+import com.crudapp.crud.model.Category;
 import com.crudapp.crud.model.Restaurant;
 import com.crudapp.crud.repository.RestaurantRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +21,9 @@ import java.util.List;
 public class RestaurantController {
 
     private final RestaurantRepository restaurantRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     public RestaurantController(RestaurantRepository restaurantRepository) {
@@ -55,7 +62,7 @@ public class RestaurantController {
         Restaurant existingRestaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid restaurant ID: " + id));
 
-        // Update the existing restaurant with the data from updatedRestaurant
+
 
         restaurantRepository.save(existingRestaurant);
 
@@ -66,5 +73,29 @@ public class RestaurantController {
     public ResponseEntity<Void> deleteRestaurant(@PathVariable Long id) {
         restaurantRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @PostMapping("/{restaurantId}/set-category/{categoryId}")
+    @Transactional
+    public ResponseEntity<String> setRestaurantCategory(
+            @PathVariable Long restaurantId,
+            @PathVariable Long categoryId
+    ) {
+        Restaurant restaurant = entityManager.find(Restaurant.class, restaurantId);
+        Category category = entityManager.find(Category.class, categoryId);
+
+        if (restaurant == null) {
+            return ResponseEntity.badRequest().body("Invalid restaurant ID: " + restaurantId);
+        }
+
+        if (category == null) {
+            return ResponseEntity.badRequest().body("Invalid category ID: " + categoryId);
+        }
+
+        restaurant.setCategory(category);
+        entityManager.persist(restaurant);
+
+        return ResponseEntity.ok("Category set successfully for the restaurant.");
     }
 }

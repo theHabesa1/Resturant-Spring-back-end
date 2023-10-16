@@ -20,9 +20,8 @@ public class MenuItem {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category; // Add a category field to represent the relationship
+    private Category category;
 
-    // Constructors, getters, and setters...
 
     public Long getItem_id() {
         return item_id;
