@@ -68,24 +68,8 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/{categoryId}/set-menu-item/{menuItemId}")
-    @Transactional
-    public ResponseEntity<String> setMenuItemToCategory(@PathVariable Long categoryId, @PathVariable Long menuItemId) {
-        Category category = entityManager.find(Category.class, categoryId);
-        if (category == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category not found");
-        }
 
-        MenuItem menuItem = entityManager.find(MenuItem.class, menuItemId);
-        if (menuItem == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Menu item not found");
-        }
 
-        category.setMenuItem(menuItem);
-        entityManager.merge(category);
-
-        return ResponseEntity.ok("Menu item added to the category successfully");
-    }
 
 
 }
