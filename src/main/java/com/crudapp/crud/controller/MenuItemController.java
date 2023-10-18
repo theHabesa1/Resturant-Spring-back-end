@@ -65,4 +65,22 @@ public class MenuItemController {
         menuItemRepository.deleteById(id);
         return ResponseEntity.ok("Menu item deleted successfully");
     }
+
+    @PostMapping("/{id}/set-category/{categoryid}")
+    public ResponseEntity<String> setCategoryForMenuItem(
+            @PathVariable Long id,
+            @PathVariable Long categoryid
+    ) {
+        MenuItem existingMenuItem = menuItemRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid menu item ID: " + id));
+
+        Category category = categoryRepository.findById(categoryid)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category ID: " + categoryid));
+
+        existingMenuItem.setCategory(category);
+        menuItemRepository.save(existingMenuItem);
+
+        return ResponseEntity.ok("Category set for the menu item successfully");
+    }
+
 }
