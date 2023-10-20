@@ -13,7 +13,7 @@ const TopSideButtons = () => {
     const dispatch = useDispatch()
 
     const openAddNewLeadModal = () => {
-        dispatch(openModal({title : "Add New Lead", bodyType : MODAL_BODY_TYPES.LEAD_ADD_NEW}))
+        dispatch(openModal({title : "Add Restaurant", bodyType : MODAL_BODY_TYPES.LEAD_ADD_NEW}))
     }
 
     return(
@@ -58,7 +58,7 @@ function Leads(){
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email Id</th>
+                        <th>Location</th>
                         <th>Created At</th>
                         <th>Status</th>
                         <th>Assigned To</th>

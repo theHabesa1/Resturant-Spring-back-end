@@ -66,7 +66,7 @@ const routes = [
       },
       
       {
-        path: '/app/settings-profile', //url
+        path: '/app/add-res', //url
         icon: <UserIcon className={submenuIconClasses}/>, // icon component
         name: 'Add Resturant', // name that appear in Sidebar
       },
@@ -106,7 +106,7 @@ const routes = [
       {
         path: '/app/leads', // url
         icon: <FireIcon className={iconClasses}/>, // icon component
-        name: 'Resturants', // name that appear in Sidebar
+        name: 'Categories', // name that appear in Sidebar
       },
       
       {
@@ -140,7 +140,7 @@ const routes = [
       {
         path: '/app/leads', // url
         icon: <FireIcon className={iconClasses}/>, // icon component
-        name: 'Resturants', // name that appear in Sidebar
+        name: 'Menu Items', // name that appear in Sidebar
       },
       
       {
