@@ -7,7 +7,7 @@ import InputText from '../../../components/Input/InputText';
 import TextAreaInput from '../../../components/Input/TextAreaInput';
 import ToogleInput from '../../../components/Input/ToogleInput';
 
-function ProfileSettings() {
+function AddCategory() {
     const dispatch = useDispatch();
 
     // Call API to update profile settings changes
@@ -34,14 +34,14 @@ function ProfileSettings() {
                 <div className="divider"></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <InputText labelTitle="Type" defaultValue="Italian" updateFormValue={updateFormValue} />
+                    <InputText labelTitle="Category" defaultValue="Italian" updateFormValue={updateFormValue} />
                     <InputText labelTitle="Rating" defaultValue="4.5" updateFormValue={updateFormValue} />
                     <ToogleInput updateType="syncData" labelTitle="Sync Data" defaultValue={true} updateFormValue={updateFormValue} />
                 </div>
 
                 <div className="mt-16">
                     <button className="btn btn-primary float-right" onClick={() => updateProfile()}>
-                        Add Profile
+                        Update Profile
                     </button>
                 </div>
             </TitleCard>
@@ -49,4 +49,4 @@ function ProfileSettings() {
     );
 }
 
-export default ProfileSettings;
+export default AddCategory;
