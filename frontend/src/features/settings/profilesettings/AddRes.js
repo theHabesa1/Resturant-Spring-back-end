@@ -23,7 +23,7 @@ function AddResturant() {
 
     return (
         <>
-            <TitleCard title="Restaurant Profile Form" topMargin="mt-2">
+            <TitleCard title="Add Resturant" topMargin="mt-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <InputText labelTitle="Restaurant Name" defaultValue="My Restaurant" updateFormValue={updateFormValue} />
                     <InputText labelTitle="Email Address" defaultValue="info@myrestaurant.com" updateFormValue={updateFormValue} />
